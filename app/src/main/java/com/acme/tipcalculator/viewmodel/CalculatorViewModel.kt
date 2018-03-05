@@ -9,7 +9,7 @@ import com.acme.tipcalculator.model.TipCalculation
 
 
 /**
- * Lab 3: Working w/ AC ViewModels, LiveData, RecyclerViews
+ * TODO Lab 3: Working w/ AC ViewModels, LiveData, RecyclerViews
  *
  * Create a custom base class for this and all ViewModels in this project to use.
  * The base class should be:

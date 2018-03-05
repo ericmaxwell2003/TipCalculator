@@ -155,7 +155,7 @@
         </LinearLayout>
 
         <!--
-            Lab 4: Adapters and Converters
+            TODO Lab 4: Adapters and Converters
 
             Make use of a new custom attribute pair
             app:text - Expression value of the locationName
