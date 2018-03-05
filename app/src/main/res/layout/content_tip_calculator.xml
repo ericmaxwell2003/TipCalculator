@@ -106,7 +106,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/total_dollar_amount"
+                    android:id="@+id/tip_dollar_amount"
                     style="@style/Base.TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tip_dollar_amount"
+                    android:id="@+id/total_dollar_amount"
                     style="@style/Base.TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
