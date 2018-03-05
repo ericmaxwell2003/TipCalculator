@@ -130,7 +130,7 @@
                             Use a formatted string based on the template R.string.dollar_amount,
                             Get the value from the viewModel's tipCalculation.tipAmount property. -->
                 <TextView
-                    android:id="@+id/total_dollar_amount"
+                    android:id="@+id/tip_dollar_amount"
                     style="@style/Base.TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
                             Use a formatted string based on the template R.string.dollar_amount,
                             Get the value from the viewModel's tipCalculation.grandTotal property. -->
                 <TextView
-                    android:id="@+id/tip_dollar_amount"
+                    android:id="@+id/total_dollar_amount"
                     style="@style/Base.TextAppearance.AppCompat.Large"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
