@@ -37,7 +37,7 @@ class CalculatorViewModel constructor(private val calculator: Calculator = Calcu
     var tipPctInput = ""
 
     /**
-     * Lab 2: Mark tipCalculation as a Bindable variable so that the view can register
+     * TODO Lab 2: Mark tipCalculation as a Bindable variable so that the view can register
      *        a property change listener and receive updates when this property changes.
      */
     var tipCalculation = TipCalculation()
@@ -51,7 +51,7 @@ class CalculatorViewModel constructor(private val calculator: Calculator = Calcu
             tipCalculation = calculator.calculateTip(checkAmt, tipPctAmt)
 
             /**
-             * Lab 2: Add a line below this comment to call the appropriate BaseObservable function
+             * TODO Lab 2: Add a line below this comment to call the appropriate BaseObservable function
              *        to notify the view that the tipCalculation property has changed.
              */
         }
@@ -63,7 +63,7 @@ class CalculatorViewModel constructor(private val calculator: Calculator = Calcu
         tipCalculation = tc
 
         /**
-         * Lab 2: Add a line below this comment to call the appropriate BaseObservable function
+         * TODO Lab 2: Add a line below this comment to call the appropriate BaseObservable function
          *        to notify the view that all properties of this viewModel have changed.
          */
     }
@@ -74,7 +74,7 @@ class CalculatorViewModel constructor(private val calculator: Calculator = Calcu
         tipCalculation = tipToSave
 
         /**
-         * Lab 2: Add a line below this comment to call the appropriate BaseObservable function
+         * TODO Lab 2: Add a line below this comment to call the appropriate BaseObservable function
          *        to notify the view that the tipCalculation property has changed.
          */
     }

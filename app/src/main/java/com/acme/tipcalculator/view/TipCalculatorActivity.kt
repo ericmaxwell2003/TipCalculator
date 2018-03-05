@@ -18,7 +18,7 @@ class TipCalculatorActivity : AppCompatActivity(),
     private lateinit var binding: ActivityTipCalculatorBinding
 
     /**
-     * Lab 2: (Optional) Remove this member variable as the binding will have a reference
+     * TODO Lab 2: (Optional) Remove this member variable as the binding will have a reference
      *        to the viewModel and we are already storing a class member reference to the binding.
      */
     private lateinit var calculatorViewModel: CalculatorViewModel
@@ -47,7 +47,7 @@ class TipCalculatorActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
 
         /**
-         * Lab 3: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
+         * TODO Lab 3: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
          *        factory method and remove the following one
          */
         // calculatorViewModel = ViewModelProviders.of(context).get(CalculatorViewModel::class.java)
@@ -57,7 +57,7 @@ class TipCalculatorActivity : AppCompatActivity(),
         setSupportActionBar(binding.toolbar)
 
         /**
-         * Lab 2: Remove this entire FAB listener block.  We're going to let Data Binding do the work
+         * TODO Lab 2: Remove this entire FAB listener block.  We're going to let Data Binding do the work
          *        of binding viewModel actions to the view and react to viewModel updates.
          *
          */
@@ -83,7 +83,7 @@ class TipCalculatorActivity : AppCompatActivity(),
 
 
         /**
-         * Lab 2: Add a line below to assign calculatorVm to the view's vm variable.
+         * TODO Lab 2: Add a line below to assign calculatorVm to the view's vm variable.
          */
     }
 
@@ -99,7 +99,7 @@ class TipCalculatorActivity : AppCompatActivity(),
 
     override fun onTipSelected(tipCalc: TipCalculation) {
         /**
-         * Lab 2: (Optional) Update this line to access the CalculatorView model from
+         * TODO Lab 2: (Optional) Update this line to access the CalculatorView model from
          *        binding.vm after the variable has been defined in the ActivityTipCalculatorBinding
          *        This goes along with the optional removal of the calculatorViewModel reference above.
          */
@@ -109,14 +109,14 @@ class TipCalculatorActivity : AppCompatActivity(),
 
     override fun onSaveTip(name: String) {
         /**
-         * Lab 2: (Optional) Update this line to access the CalculatorView model from
+         * TODO Lab 2: (Optional) Update this line to access the CalculatorView model from
          *        binding.vm after the variable has been defined in the ActivityTipCalculatorBinding
          *        This goes along with the optional removal of the calculatorViewModel reference above.
          */
         calculatorViewModel.saveCurrentTip(name)
 
         /**
-         * Lab 2: Remove this entire block to update the view after saving the tip.  We're going to let
+         * TODO Lab 2: Remove this entire block to update the view after saving the tip.  We're going to let
          *        data binding react to the changed ViewModel state.
          */
         binding.content?.apply {

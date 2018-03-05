@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--
-       Lab 2:
+       TODO Lab 2:
 
        Add a variable called `vm` of type `com.acme.tipcalculator.viewmodel.CalculatorViewModel`
        to use within the context of this view.  Be sure to wrap it in a data section.
@@ -31,13 +31,13 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <!-- Lab 2: Pass `vm` to content_tip_calculator. -->
+        <!-- TODO Lab 2: Pass `vm` to content_tip_calculator. -->
         <include
             android:id="@+id/content"
             layout="@layout/content_tip_calculator" />
 
 
-        <!-- Lab 2: Use a lambda expression to invoke vm.calculateTip()
+        <!-- TODO Lab 2: Use a lambda expression to invoke vm.calculateTip()
                     [with no arguments] directly from this FAB definition onClick  -->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/calculate_fab"

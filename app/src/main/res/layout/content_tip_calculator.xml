@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--
-        Lab 2:
+        TODO Lab 2:
 
         Add a variable called `vm` of type `com.acme.tipcalculator.viewmodel.CalculatorViewModel`
         to use within the context of this view.  Be sure to wrap it in a data section.
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Lab 2: Use a binding expression to set the `android:text` to the
+            <!-- TODO Lab 2: Use a binding expression to set the `android:text` to the
                         viewModel property checkAmtInput
                         Make this a 2-way bound property. -->
             <EditText
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_layout_check_amount">
 
-            <!-- Lab 2: Use a binding expression to set the `android:text` to the
+            <!-- TODO Lab 2: Use a binding expression to set the `android:text` to the
                         viewModel property tipPctInput
                         Make this a 2-way bound property. -->
             <EditText
@@ -89,7 +89,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <!-- Lab 2: Use a binding expression to set the `android:text` for this TextView.
+                <!-- TODO Lab 2: Use a binding expression to set the `android:text` for this TextView.
                             Use a formatted string based on the template R.string.dollar_amount,
                             Get the value from the viewModel's tipCalculation.checkAmount property.
 
@@ -126,7 +126,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <!-- Lab 2: Use a binding expression to set the `android:text` for this TextView.
+                <!-- TODO Lab 2: Use a binding expression to set the `android:text` for this TextView.
                             Use a formatted string based on the template R.string.dollar_amount,
                             Get the value from the viewModel's tipCalculation.tipAmount property. -->
                 <TextView
@@ -156,7 +156,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <!-- Lab 2: Use a binding expression to set the `android:text` for this TextView.
+                <!-- TODO Lab 2: Use a binding expression to set the `android:text` for this TextView.
                             Use a formatted string based on the template R.string.dollar_amount,
                             Get the value from the viewModel's tipCalculation.grandTotal property. -->
                 <TextView
@@ -180,10 +180,10 @@
 
         </LinearLayout>
 
-        <!-- Lab 2: Use a binding expression to set the `android:text` for this TextView.
+        <!-- TODO Lab 2: Use a binding expression to set the `android:text` for this TextView.
                     Get the value from the viewModel's tipCalculation.locationName property. -->
         <!--
-            Lab 4: Adapters and Converters
+            TODO Lab 4: Adapters and Converters
 
             Make use of a new custom attribute pair
             app:text - Expression value of the locationName
