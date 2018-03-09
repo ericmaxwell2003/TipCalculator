@@ -17,10 +17,6 @@ class TipCalculatorActivity : AppCompatActivity(),
 
     private lateinit var binding: ActivityTipCalculatorBinding
 
-    /**
-     * TODO Lab 2: (Optional) Remove this member variable as the binding will have a reference
-     *        to the viewModel and we are already storing a class member reference to the binding.
-     */
     private lateinit var calculatorViewModel: CalculatorViewModel
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,7 +46,7 @@ class TipCalculatorActivity : AppCompatActivity(),
          * TODO Lab 3: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
          *        factory method and remove the following one
          */
-        // calculatorViewModel = ViewModelProviders.of(context).get(CalculatorViewModel::class.java)
+        // calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         calculatorViewModel = CalculatorViewModel()
 
         binding = DataBindingUtil.setContentView<ActivityTipCalculatorBinding>(this, R.layout.activity_tip_calculator)
@@ -83,7 +79,7 @@ class TipCalculatorActivity : AppCompatActivity(),
 
 
         /**
-         * TODO Lab 2: Add a line below to assign calculatorVm to the view's vm variable.
+         * TODO Lab 2: Add a line below to assign `calculatorViewModel` to the view's `vm` variable.
          */
     }
 
@@ -98,21 +94,13 @@ class TipCalculatorActivity : AppCompatActivity(),
     }
 
     override fun onTipSelected(tipCalc: TipCalculation) {
-        /**
-         * TODO Lab 2: (Optional) Update this line to access the CalculatorView model from
-         *        binding.vm after the variable has been defined in the ActivityTipCalculatorBinding
-         *        This goes along with the optional removal of the calculatorViewModel reference above.
-         */
+
         calculatorViewModel.loadTipCalculation(tipCalc)
         Snackbar.make(binding.root, "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onSaveTip(name: String) {
-        /**
-         * TODO Lab 2: (Optional) Update this line to access the CalculatorView model from
-         *        binding.vm after the variable has been defined in the ActivityTipCalculatorBinding
-         *        This goes along with the optional removal of the calculatorViewModel reference above.
-         */
+
         calculatorViewModel.saveCurrentTip(name)
 
         /**
