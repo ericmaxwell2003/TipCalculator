@@ -6,19 +6,19 @@ import android.databinding.BindingAdapter
 import android.view.View
 import android.widget.TextView
 
-//@BindingAdapter("app:text", "app:animate")
-//fun magicTextWithFade(tv: TextView, text: String?, animate: Boolean) {
-//
-//    if (text.isNullOrEmpty()) {
-//        hideView(tv, animate) {
-//            tv.text = ""
-//        }
-//    } else {
-//        tv.text = text
-//        showView(tv, animate)
-//    }
-//
-//}
+
+@BindingAdapter(value = ["app:text", "app:animate"])
+fun magicTextWithFade(tv: TextView, text: String?, animate: Boolean) {
+
+    if (text.isNullOrEmpty()) {
+        hideView(tv, animate) {
+            tv.text = ""
+        }
+    } else {
+        tv.text = text
+        showView(tv, animate)
+    }
+}
 
 private fun showView(v: View, animate: Boolean, then: () -> Unit = {}) {
 
