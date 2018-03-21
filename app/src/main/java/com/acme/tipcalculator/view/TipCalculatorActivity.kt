@@ -44,8 +44,8 @@ class TipCalculatorActivity : AppCompatActivity(),
         setSupportActionBar(binding.toolbar)
 
         /**
-         * TODO Lab 3: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
-         *        factory method.
+         * TODO Lab 4: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
+         *        factory method and use it in the next line instead of constructing a new CalculatorViewModel() each time.
          */
         // calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         binding.vm = CalculatorViewModel()

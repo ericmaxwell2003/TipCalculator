@@ -12,12 +12,13 @@ import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import com.acme.tipcalculator.R
+import com.acme.tipcalculator.model.InMemoryTipCalculationRepository
 import com.acme.tipcalculator.model.TipCalculation
 import com.acme.tipcalculator.viewmodel.CalculatorViewModel
 import kotlinx.android.synthetic.main.saved_tip_calculations_list.view.*
 
 /**
- * TODO Lab 3: Working w/ AC ViewModels, LiveData, RecyclerViews
+ * TODO Lab 4: Working w/ AC ViewModels, LiveData, RecyclerViews
  *
  * Add/Update the missing pieces of this Fragment to get a handle on the lifecycle aware
  * AC ViewModel, use it to get saved TipCalculations as LiveData and update the recyclerViews
@@ -37,6 +38,10 @@ class LoadDialogFragment : DialogFragment() {
     }
 
     private var calculatorViewModel: CalculatorViewModel? = null
+
+    /** TODO Lab 4: Remove this memberVariable.  We will access the CalculatorViewModel directly */
+    private var calculatorRepository = InMemoryTipCalculationRepository
+
     private var itemSelectedCallback: Callback? = null
 
     override fun onAttach(context: Context?) {
@@ -44,10 +49,11 @@ class LoadDialogFragment : DialogFragment() {
         itemSelectedCallback = context as? Callback
         if(context is FragmentActivity) {
             /**
-             * TODO Lab 3: Uncomment this line to assign a calculatorViewModel when we attach to the
+             * TODO Lab 4: Uncomment this line to assign a calculatorViewModel when we attach to the
              *        hosting activity.
              */
             // calculatorViewModel = ViewModelProviders.of(context).get(CalculatorViewModel::class.java)
+
         }
     }
 
@@ -88,7 +94,7 @@ class LoadDialogFragment : DialogFragment() {
         rv.adapter = tcListAdapter
 
         /**
-         * TODO Lab 3: Uncomment this code block to ask the ViewModel for TipCalculations
+         * TODO Lab 4: Uncomment this code block to ask the ViewModel for TipCalculations
          *        as LiveData and update the LoadTipCalculationRecyclerAdapter with the
          *        update list of tips when a change is observed.
          */
@@ -99,6 +105,17 @@ class LoadDialogFragment : DialogFragment() {
             }
         })
         */
+
+
+        /**
+         * TODO Lab 4: Remove these lines which load tipCalculations directly from the
+         *             repository.
+         */
+        calculatorRepository.loadSavedTipCalculations().observe(this, Observer { tips ->
+            if(tips != null) {
+                tcListAdapter.updateList(tips)
+            }
+        })
 
         return rv
     }

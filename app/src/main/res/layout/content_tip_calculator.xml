@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -85,8 +85,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="$20.00"
-                    android:text="@{@string/dollar_amount(vm.tipCalculation.checkAmount)}"
-                    />
+                    android:text="@{@string/dollar_amount(vm.tipCalculation.checkAmount)}" />
 
                 <TextView
                     android:id="@+id/bill_amount_label"
@@ -120,8 +119,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="Tip"
-                    android:text="@string/tip_output_label"
-                    />
+                    android:text="@string/tip_output_label" />
 
 
             </LinearLayout>
@@ -139,8 +137,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="$31.50"
-                    android:text="@{@string/dollar_amount(vm.tipCalculation.grandTotal)}"
-                    />
+                    android:text="@{@string/dollar_amount(vm.tipCalculation.grandTotal)}" />
 
                 <TextView
                     android:id="@+id/total_dollar_amount_label"
@@ -154,20 +151,6 @@
 
         </LinearLayout>
 
-        <!--
-            TODO Lab 4: Adapters and Converters
-
-            Make use of a new custom attribute pair
-            app:text - Expression value of the locationName
-            app:animate - Expression value of whether to animate transitions or not
-
-            This will need to be implemented as a BindingAdapter for this to work
-            See `BindingAdapters.kt` for other half (open with cmd+o)
-
-            Bonus Questions:
-            * - What happens if you omit one of the two attributes?
-            * - What happens if you do not use as expression?
-        -->
         <TextView
             android:id="@+id/calculation_name"
             style="@style/Base.TextAppearance.AppCompat.Headline"
@@ -182,6 +165,9 @@
             android:text="@{vm.tipCalculation.locationName}"
             tools:text="Veggie Palace" />
 
+
+        <!-- app:text="@{vm.tipCalculation.locationName}"
+            app:animate="@{true}"-->
 
     </android.support.constraint.ConstraintLayout>
 
