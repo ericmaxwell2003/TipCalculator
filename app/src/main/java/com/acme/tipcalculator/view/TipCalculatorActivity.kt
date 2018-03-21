@@ -1,6 +1,5 @@
 package com.acme.tipcalculator.view
 
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -44,7 +43,7 @@ class TipCalculatorActivity : AppCompatActivity(),
         binding = DataBindingUtil.setContentView<ActivityTipCalculatorBinding>(this, R.layout.activity_tip_calculator)
         setSupportActionBar(binding.toolbar)
 
-        binding.vm = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
+        binding.vm = CalculatorViewModel()
     }
 
     fun showSaveDialog() {

@@ -5,7 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.view.View
 
 /**
- * TODO Lab 4: Adapters and Converters
+ * TODO Lab 3: Adapters and Converters
  *
  * Wire this function up as a Binding Adapter for TextViews to support the custom
  * View Attribute pair
@@ -25,6 +25,7 @@ import android.view.View
  * - What would it take to apply this to all Views?
  * - What happens if you change the order of the arguments?
  */
+//@BindingAdapter(value = ["app:text", "app:animate"])
 fun magicTextWithFade(/* Hint, this method needs 3 arguments.  Remember Order is important! */) {
 
     /*
