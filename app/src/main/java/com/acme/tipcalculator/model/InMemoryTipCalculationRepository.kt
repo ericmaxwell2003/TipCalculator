@@ -3,7 +3,7 @@ package com.acme.tipcalculator.model
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 
-class InMemoryTipCalculationRepository : TipCalculationRepository {
+object InMemoryTipCalculationRepository : TipCalculationRepository {
 
     val savedTips = mutableMapOf<String, TipCalculation>()
 

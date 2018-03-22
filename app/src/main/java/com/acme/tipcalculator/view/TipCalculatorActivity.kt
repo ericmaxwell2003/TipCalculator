@@ -16,7 +16,12 @@ class TipCalculatorActivity : AppCompatActivity(),
         LoadDialogFragment.Callback,
         SaveDialogFragment.Callback {
 
-    /** TODO Lab 1: Add a lateinit var called binding of the generated binding type from `activity_tip_calculator.xml` */
+    /**
+     *  TODO Lab 1: After turning on databinding in your gradle file, and wrapping the layouts
+     *  inside of `activity_tip_calculator.xml` in layout tags.  Uncomment the following
+     *  lateinit var called binding of the generated binding type from `activity_tip_calculator.xml`
+     **/
+    // lateinit var binding: ActivityTipCalculatorBinding
 
     private lateinit var calculatorViewModel: CalculatorViewModel
 
@@ -43,19 +48,13 @@ class TipCalculatorActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /**
-         * TODO Lab 3: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
-         *        factory method and remove the following one
-         */
-        // calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         calculatorViewModel = CalculatorViewModel()
 
         /**
-         * TODO Lab 1: Use the static DataBindingUtil class to set the content view and generate the binding for this
-         *        view in one step.
-         *        Use this to set the lateinit binding var that you defined at the class level.
+         * TODO Lab 1: Use the static DataBindingUtil.setContentView function to set the content view
+         * and generate the binding for this view in one step.
          *
-         *  Hint: Replace the existing setContentView with the appropriate DataBindingUtil version.
+         * Use this to set the lateinit binding var that you defined at the class level.
          */
          setContentView(R.layout.activity_tip_calculator)
 
@@ -66,24 +65,11 @@ class TipCalculatorActivity : AppCompatActivity(),
         setSupportActionBar(findViewById(R.id.toolbar))
 
         /** TODO Lab 1: Access the fab from the binding directly instead of using findViewById(..) */
-        /**
-         * TODO Lab 2: Remove this entire FAB listener block.  We're going to let Data Binding do the work
-         *        of binding viewModel actions to the view and react to viewModel updates.
-         *
-         */
         findViewById<FloatingActionButton>(R.id.calculate_fab).setOnClickListener { _ ->
 
             /** TODO Lab 1: Everywhere inside of this action block replace the findViewById(..) lookup
              *         with a property lookup on the binding.
-             *   Hint: Because these views are bound to the child binding / layout file included inside
-             *         of content_tip_calculator.xml, you'll need to access the binding through
-             *         binding.content...
-             *         The content property comes from the id assigned to the include block
-             *         in activity_tip_calculator.
-             *             <include android:id="@+id/content"  <== This id generates a getter for the child binding.
-             *                      layout="@layout/content_tip_calculator" />
              */
-            // Without data binding, we have to manually set the inputs on our view model.
             calculatorViewModel.checkAmtInput = (findViewById<EditText>(R.id.input_check_amount)).text.toString()
             calculatorViewModel.tipPctInput = (findViewById<EditText>(R.id.input_tip_percentage)).text.toString()
 
@@ -98,11 +84,6 @@ class TipCalculatorActivity : AppCompatActivity(),
                 (findViewById<TextView>(R.id.calculation_name)).text = tc.locationName
             }
         }
-
-
-        /**
-         * TODO Lab 2: Add a line below to assign `calculatorViewModel` to the view's `vm` variable.
-         */
     }
 
     fun showSaveDialog() {
@@ -119,6 +100,19 @@ class TipCalculatorActivity : AppCompatActivity(),
 
         calculatorViewModel.loadTipCalculation(tipCalc)
 
+        /** TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
+         *         with a property lookup on the binding.
+         */
+         (findViewById<TextView>(R.id.input_check_amount)).text = calculatorViewModel.checkAmtInput
+         (findViewById<TextView>(R.id.input_tip_percentage)).text = calculatorViewModel.tipPctInput
+
+         calculatorViewModel.tipCalculation.let { tc ->
+            (findViewById<TextView>(R.id.bill_amount)).text = getString(R.string.dollar_amount, tc.checkAmount)
+            (findViewById<TextView>(R.id.tip_dollar_amount)).text = getString(R.string.dollar_amount, tc.tipAmount)
+            (findViewById<TextView>(R.id.total_dollar_amount)).text = getString(R.string.dollar_amount, tc.grandTotal)
+            (findViewById<TextView>(R.id.calculation_name)).text = tc.locationName
+        }
+
         /** TODO Lab 1: Replace this findViewById with the property that the binding gives you to access the root view. */
         Snackbar.make(window.decorView.findViewById(android.R.id.content), "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
     }
@@ -129,17 +123,6 @@ class TipCalculatorActivity : AppCompatActivity(),
 
         /** TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
          *         with a property lookup on the binding.
-         *   Hint: Because these views are bound to the child binding / layout file included inside
-         *         of content_tip_calculator.xml, you'll need to access the binding through
-         *         binding.content...
-         *         The content property comes from the id assigned to the include block
-         *         in activity_tip_calculator.
-         *             <include android:id="@+id/content"  <== This id generates a getter for the child binding.
-         *                      layout="@layout/content_tip_calculator" />
-         */
-        /**
-         * TODO Lab 2: Remove this entire block to update the view after saving the tip.  We're going to let
-         *        data binding react to the changed ViewModel state.
          */
         calculatorViewModel.tipCalculation.let { tc ->
             (findViewById<TextView>(R.id.bill_amount)).text = getString(R.string.dollar_amount, tc.checkAmount)
