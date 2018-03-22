@@ -42,6 +42,8 @@ class TipCalculatorActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        calculatorViewModel = CalculatorViewModel()
+
         binding = DataBindingUtil.setContentView<ActivityTipCalculatorBinding>(this, R.layout.activity_tip_calculator)
         setSupportActionBar(binding.toolbar)
 
@@ -70,8 +72,6 @@ class TipCalculatorActivity : AppCompatActivity(),
             }
         }
 
-        calculatorViewModel = CalculatorViewModel()
-
         /**
          * TODO Lab 2: Uncomment this line to assign `calculatorViewModel` to the view's `vm` variable.
          */
@@ -91,6 +91,24 @@ class TipCalculatorActivity : AppCompatActivity(),
     override fun onTipSelected(tipCalc: TipCalculation) {
 
         calculatorViewModel.loadTipCalculation(tipCalc)
+
+        /**
+         * TODO Lab 2: Remove this entire block to update the view after loading the tip.  We're going to let
+         *        data binding react to the changed ViewModel state.
+         */
+        binding.content?.apply {
+
+            inputCheckAmount.setText(calculatorViewModel.checkAmtInput)
+            inputTipPercentage.setText(calculatorViewModel.tipPctInput)
+
+            calculatorViewModel.tipCalculation.let { tc ->
+                billAmount.text = getString(R.string.dollar_amount, tc.checkAmount)
+                tipDollarAmount.text = getString(R.string.dollar_amount, tc.tipAmount)
+                totalDollarAmount.text = getString(R.string.dollar_amount, tc.grandTotal)
+                calculationName.text = tc.locationName
+            }
+        }
+
         Snackbar.make(binding.root, "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
     }
 
