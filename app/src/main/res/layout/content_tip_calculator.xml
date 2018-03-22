@@ -180,20 +180,6 @@
 
         <!-- TODO Lab 2: Use a binding expression to set the `android:text` for this TextView.
                     Get the value from the viewModel's tipCalculation.locationName property. -->
-        <!--
-            TODO Lab 4: Adapters and Converters
-
-            Make use of a new custom attribute pair
-            app:text - Expression value of the locationName
-            app:animate - Expression value of whether to animate transitions or not
-
-            This will need to be implemented as a BindingAdapter for this to work
-            See `BindingAdapters.kt` for other half (open with cmd+o)
-
-            Bonus Questions:
-            * - What happens if you omit one of the two attributes?
-            * - What happens if you do not use as expression?
-        -->
         <TextView
             android:id="@+id/calculation_name"
             style="@style/Base.TextAppearance.AppCompat.Headline"

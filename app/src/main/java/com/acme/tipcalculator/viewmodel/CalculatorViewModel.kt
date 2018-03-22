@@ -13,22 +13,6 @@ import com.acme.tipcalculator.model.TipCalculation
  * observable data for the view and notify the view when properties change.
  *
  */
-/**
- * TODO Lab 3: Working w/ AC ViewModels, LiveData, RecyclerViews
- *
- * Create a custom base class for this and all ViewModels in this project to use.
- * The base class should be:
- * - Abstract
- * - Extend the AC ViewModel()
- * - Implement the DataBinding Observable interface and offer all of the same functionality
- *   that base Observable gave us.
- *
- * Hint: BaseObservable's source code is not hidden.  You can command click to examine what it
- *       is doing... It's okay to copy it.  What happens at DC Boston, stays at DC Boston 😉
- *
- * Bonus Questions:
- *
- */
 class CalculatorViewModel constructor(private val calculator: Calculator = Calculator()) {
 
     var checkAmtInput = ""
@@ -50,7 +34,7 @@ class CalculatorViewModel constructor(private val calculator: Calculator = Calcu
 
             /**
              * TODO Lab 2: Add a line below this comment to call the appropriate BaseObservable function
-             *        to notify the view that the tipCalculation property has changed.
+             *        to notify the view that the BR.tipCalculation property has changed.
              */
         }
     }

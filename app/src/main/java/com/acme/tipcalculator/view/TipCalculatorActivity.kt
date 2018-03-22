@@ -42,18 +42,11 @@ class TipCalculatorActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /**
-         * TODO Lab 3: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
-         *        factory method and remove the following one
-         */
-        // calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
-        calculatorViewModel = CalculatorViewModel()
-
         binding = DataBindingUtil.setContentView<ActivityTipCalculatorBinding>(this, R.layout.activity_tip_calculator)
         setSupportActionBar(binding.toolbar)
 
         /**
-         * TODO Lab 2: Remove this entire FAB listener block.  We're going to let Data Binding do the work
+         * TODO Lab 2: Remove this entire FloatingActionButton listener block.  We're going to let Data Binding do the work
          *        of binding viewModel actions to the view and react to viewModel updates.
          *
          */
@@ -77,10 +70,12 @@ class TipCalculatorActivity : AppCompatActivity(),
             }
         }
 
+        calculatorViewModel = CalculatorViewModel()
 
         /**
-         * TODO Lab 2: Add a line below to assign `calculatorViewModel` to the view's `vm` variable.
+         * TODO Lab 2: Uncomment this line to assign `calculatorViewModel` to the view's `vm` variable.
          */
+        // binding.vm = calculatorViewModel
     }
 
     fun showSaveDialog() {
