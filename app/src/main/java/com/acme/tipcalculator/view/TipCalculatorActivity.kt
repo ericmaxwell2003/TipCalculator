@@ -100,7 +100,8 @@ class TipCalculatorActivity : AppCompatActivity(),
 
         calculatorViewModel.loadTipCalculation(tipCalc)
 
-        /** TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
+        /**
+         *  TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
          *         with a property lookup on the binding.
          */
          (findViewById<TextView>(R.id.input_check_amount)).text = calculatorViewModel.checkAmtInput
@@ -121,7 +122,8 @@ class TipCalculatorActivity : AppCompatActivity(),
 
         calculatorViewModel.saveCurrentTip(name)
 
-        /** TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
+        /**
+         *  TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
          *         with a property lookup on the binding.
          */
         calculatorViewModel.tipCalculation.let { tc ->
