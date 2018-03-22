@@ -37,9 +37,7 @@ class LoadDialogFragment : DialogFragment() {
         fun onTipSelected(tipCalc: TipCalculation)
     }
 
-    private var calculatorViewModel: CalculatorViewModel? = null
-
-    /** TODO Lab 4: Remove this memberVariable.  We will access the CalculatorViewModel directly */
+    /** TODO Lab 4: Remove calculator repository and replace with a nullable CalculatorViewModel member variable */
     private var calculatorRepository = InMemoryTipCalculationRepository
 
     private var itemSelectedCallback: Callback? = null
@@ -60,7 +58,8 @@ class LoadDialogFragment : DialogFragment() {
     override fun onDetach() {
         super.onDetach()
         itemSelectedCallback = null
-        calculatorViewModel = null
+        /** TODO Lab 4: Uncomment this line to nullify the calculatorViewModel onDetach() */
+        // calculatorViewModel = null
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -94,24 +93,10 @@ class LoadDialogFragment : DialogFragment() {
         rv.adapter = tcListAdapter
 
         /**
-         * TODO Lab 4: Uncomment this code block to ask the ViewModel for TipCalculations
-         *        as LiveData and update the LoadTipCalculationRecyclerAdapter with the
-         *        update list of tips when a change is observed.
+         * TODO Lab 4: Use the `calculatorViewModel.loadSavedTipCalculations() function
+         * to load savedTipCalculations instead of referencing the repository directly.
          */
-        /*
-        calculatorViewModel?.loadSavedTipCalculations()?.observe(this, Observer { tips ->
-            if(tips != null) {
-                tcListAdapter.updateList(tips)
-            }
-        })
-        */
-
-
-        /**
-         * TODO Lab 4: Remove these lines which load tipCalculations directly from the
-         *             repository.
-         */
-        calculatorRepository.loadSavedTipCalculations().observe(this, Observer { tips ->
+        calculatorRepository.loadSavedTipCalculations()?.observe(this, Observer { tips ->
             if(tips != null) {
                 tcListAdapter.updateList(tips)
             }

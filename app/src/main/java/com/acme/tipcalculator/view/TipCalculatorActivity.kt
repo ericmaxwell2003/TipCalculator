@@ -47,7 +47,7 @@ class TipCalculatorActivity : AppCompatActivity(),
          * TODO Lab 4: Uncomment this line to assign a calculatorViewModel using the AC ViewModelProviders
          *        factory method and use it in the next line instead of constructing a new CalculatorViewModel() each time.
          */
-        // calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
+        // val calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         binding.vm = CalculatorViewModel()
     }
 
