@@ -45,8 +45,6 @@ class LoadTipCalculationRecyclerAdapter(
 
         fun bind(tipCalc: TipCalculation) {
 
-            root.setOnClickListener { onTipCalcSelected(tipCalc) }
-
             /**
              * TODO Lab 2: Modify this function body to set the bindings `vm` variable
              * that you defined in `saved_tip_calculations_list_item` and remove the
@@ -56,7 +54,7 @@ class LoadTipCalculationRecyclerAdapter(
             root.findViewById<TextView>(R.id.locationName)?.text = tipCalc.locationName
             root.findViewById<TextView>(R.id.total_dollar_amount)?.text =
                     root.resources.getString(R.string.dollar_amount, tipCalc.grandTotal)
-
+            root.setOnClickListener { onTipCalcSelected(tipCalc) }
         }
     }
 

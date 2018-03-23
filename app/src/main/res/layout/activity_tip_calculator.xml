@@ -5,11 +5,14 @@
 
     <!--
        TODO Lab 2: Add a variable called `vm` of type `com.acme.tipcalculator.viewmodel.CalculatorViewModel`
-       to use within the context of this view.  Be sure to wrap it in a data section.
 
        Bonus Questions:
        * - What method gets generate on the binding object in response to adding this variable?
      -->
+    <data>
+
+    </data>
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
