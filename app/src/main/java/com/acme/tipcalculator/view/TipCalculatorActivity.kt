@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.acme.tipcalculator.R
@@ -58,31 +60,18 @@ class TipCalculatorActivity : AppCompatActivity(),
          */
          setContentView(R.layout.activity_tip_calculator)
 
-        /**
-         * TODO Lab 1: Access the toolbar from the binding directly instead of using findViewById(..)
-         * Bonus Question:  Is this more efficient? why or why not?
-         */
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(getToolbar())
 
-        /** TODO Lab 1: Access the fab from the binding directly instead of using findViewById(..) */
-        findViewById<FloatingActionButton>(R.id.calculate_fab).setOnClickListener { _ ->
+        getFloatingActionButton().setOnClickListener { _ ->
 
-            /** TODO Lab 1: Everywhere inside of this action block replace the findViewById(..) lookup
-             *         with a property lookup on the binding.
-             */
-            calculatorViewModel.checkAmtInput = (findViewById<EditText>(R.id.input_check_amount)).text.toString()
-            calculatorViewModel.tipPctInput = (findViewById<EditText>(R.id.input_tip_percentage)).text.toString()
+            calculatorViewModel.checkAmtInput = getInputCheckoutAmountValue()
+            calculatorViewModel.tipPctInput = getInputTipPercentageValue()
 
             // Invoke Calculate Tip on the ViewModel
             calculatorViewModel.calculateTip()
 
             // After the calculation, we need to manually update our view elements
-            calculatorViewModel.tipCalculation.let { tc ->
-                (findViewById<TextView>(R.id.bill_amount)).text = getString(R.string.dollar_amount, tc.checkAmount)
-                (findViewById<TextView>(R.id.tip_dollar_amount)).text = getString(R.string.dollar_amount, tc.tipAmount)
-                (findViewById<TextView>(R.id.total_dollar_amount)).text = getString(R.string.dollar_amount, tc.grandTotal)
-                (findViewById<TextView>(R.id.calculation_name)).text = tc.locationName
-            }
+            updateView()
         }
     }
 
@@ -97,35 +86,47 @@ class TipCalculatorActivity : AppCompatActivity(),
     }
 
     override fun onTipSelected(tipCalc: TipCalculation) {
-
         calculatorViewModel.loadTipCalculation(tipCalc)
-
-        /**
-         *  TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
-         *         with a property lookup on the binding.
-         */
-         (findViewById<TextView>(R.id.input_check_amount)).text = calculatorViewModel.checkAmtInput
-         (findViewById<TextView>(R.id.input_tip_percentage)).text = calculatorViewModel.tipPctInput
-
-         calculatorViewModel.tipCalculation.let { tc ->
-            (findViewById<TextView>(R.id.bill_amount)).text = getString(R.string.dollar_amount, tc.checkAmount)
-            (findViewById<TextView>(R.id.tip_dollar_amount)).text = getString(R.string.dollar_amount, tc.tipAmount)
-            (findViewById<TextView>(R.id.total_dollar_amount)).text = getString(R.string.dollar_amount, tc.grandTotal)
-            (findViewById<TextView>(R.id.calculation_name)).text = tc.locationName
-        }
-
-        /** TODO Lab 1: Replace this findViewById with the property that the binding gives you to access the root view. */
-        Snackbar.make(window.decorView.findViewById(android.R.id.content), "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
+        updateView(true)
+        Snackbar.make(getRootView(), "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onSaveTip(name: String) {
-
         calculatorViewModel.saveCurrentTip(name)
+        updateView()
+        Snackbar.make(getRootView(), "Saved $name", Snackbar.LENGTH_SHORT).show()
+    }
 
-        /**
-         *  TODO Lab 1: Everywhere inside of this block replace the findViewById(..) lookup
-         *         with a property lookup on the binding.
-         */
+    /**
+     * TODO Lab 1: Get views from the binding instead of using findViewById.
+     */
+    private fun getInputTipPercentageValue() : String {
+        return (findViewById<EditText>(R.id.input_tip_percentage)).text.toString()
+    }
+
+    private fun getInputCheckoutAmountValue() : String {
+        return (findViewById<EditText>(R.id.input_check_amount)).text.toString()
+    }
+
+    private fun getFloatingActionButton() : FloatingActionButton {
+        return findViewById<FloatingActionButton>(R.id.calculate_fab)
+    }
+
+    private fun getRootView(): View {
+        return window.decorView.findViewById<View>(android.R.id.content)
+    }
+
+    private fun TipCalculatorActivity.getToolbar(): Toolbar {
+        return findViewById<Toolbar>(R.id.toolbar)
+    }
+
+    private fun updateView(inputsToo: Boolean = false) {
+
+        if(inputsToo) {
+            (findViewById<TextView>(R.id.input_check_amount)).text = calculatorViewModel.checkAmtInput
+            (findViewById<TextView>(R.id.input_tip_percentage)).text = calculatorViewModel.tipPctInput
+        }
+
         calculatorViewModel.tipCalculation.let { tc ->
             (findViewById<TextView>(R.id.bill_amount)).text = getString(R.string.dollar_amount, tc.checkAmount)
             (findViewById<TextView>(R.id.tip_dollar_amount)).text = getString(R.string.dollar_amount, tc.tipAmount)
@@ -133,8 +134,6 @@ class TipCalculatorActivity : AppCompatActivity(),
             (findViewById<TextView>(R.id.calculation_name)).text = tc.locationName
         }
 
-        /** TODO Lab 1: Replace this findViewById with the property that the binding gives you to access the root view. */
-        Snackbar.make(window.decorView.findViewById(android.R.id.content), "Saved $name", Snackbar.LENGTH_SHORT).show()
     }
 
 }
