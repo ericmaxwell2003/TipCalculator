@@ -5,8 +5,10 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.acme.tipcalculator.R
 import com.acme.tipcalculator.databinding.ActivityTipCalculatorBinding
 import com.acme.tipcalculator.model.TipCalculation
@@ -17,6 +19,8 @@ class TipCalculatorActivity : AppCompatActivity(),
         SaveDialogFragment.Callback {
 
     private lateinit var binding: ActivityTipCalculatorBinding
+
+    private lateinit var calculatorViewModel: CalculatorViewModel
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_tip_calculator, menu)
@@ -41,10 +45,13 @@ class TipCalculatorActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityTipCalculatorBinding>(this, R.layout.activity_tip_calculator)
-        setSupportActionBar(binding.toolbar)
+        calculatorViewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
 
-        binding.vm = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
+        binding = DataBindingUtil.setContentView<ActivityTipCalculatorBinding>(this, R.layout.activity_tip_calculator)
+
+        setSupportActionBar(getToolbar())
+
+        binding.vm = calculatorViewModel
     }
 
     fun showSaveDialog() {
@@ -58,13 +65,21 @@ class TipCalculatorActivity : AppCompatActivity(),
     }
 
     override fun onTipSelected(tipCalc: TipCalculation) {
-        binding.vm?.loadTipCalculation(tipCalc)
-        Snackbar.make(binding.root, "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
+        calculatorViewModel.loadTipCalculation(tipCalc)
+        Snackbar.make(getRootView(), "Loaded ${tipCalc.locationName}", Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onSaveTip(name: String) {
-        binding.vm?.saveCurrentTip(name)
-        Snackbar.make(binding.root, "Saved $name", Snackbar.LENGTH_SHORT).show()
+        calculatorViewModel.saveCurrentTip(name)
+        Snackbar.make(getRootView(), "Saved $name", Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun getRootView(): View {
+        return binding.root
+    }
+
+    private fun TipCalculatorActivity.getToolbar(): Toolbar {
+        return binding.toolbar
     }
 
 }

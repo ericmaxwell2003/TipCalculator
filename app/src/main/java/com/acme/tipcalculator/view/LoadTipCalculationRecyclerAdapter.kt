@@ -31,18 +31,17 @@ class LoadTipCalculationRecyclerAdapter(
         val binding = DataBindingUtil.inflate<SavedTipCalculationsListItemBinding>(
                 inflater, R.layout.saved_tip_calculations_list_item, parent, false)
         return LoadTipCalculationViewHolder(binding)
+
     }
 
     inner class LoadTipCalculationViewHolder(val binding: SavedTipCalculationsListItemBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tipCalc: TipCalculation) {
+            binding.vm = tipCalc
             binding.root.setOnClickListener { onTipCalcSelected(tipCalc) }
-            binding.tipCalculation = tipCalc
             binding.executePendingBindings()
         }
-
-
     }
 
 }

@@ -139,8 +139,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="$31.50"
-                    android:text="@{@string/dollar_amount(vm.tipCalculation.grandTotal)}"
-                    />
+                    android:text="@{@string/dollar_amount(vm.tipCalculation.grandTotal)}" />
 
                 <TextView
                     android:id="@+id/total_dollar_amount_label"
