@@ -29,6 +29,7 @@
         </android.support.design.widget.AppBarLayout>
 
         <include
+            android:id="@+id/content"
             layout="@layout/content_tip_calculator"
             app:vm="@{vm}" />
 

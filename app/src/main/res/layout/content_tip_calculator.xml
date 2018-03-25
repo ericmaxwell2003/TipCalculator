@@ -139,8 +139,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="$31.50"
-                    android:text="@{@string/dollar_amount(vm.tipCalculation.grandTotal)}"
-                    />
+                    android:text="@{@string/dollar_amount(vm.tipCalculation.grandTotal)}" />
 
                 <TextView
                     android:id="@+id/total_dollar_amount_label"
@@ -179,8 +178,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calculation_outputs"
             android:textAlignment="center"
+            tools:text="Veggie Palace"
             android:text="@{vm.tipCalculation.locationName}"
-            tools:text="Veggie Palace" />
+            />
 
 
     </android.support.constraint.ConstraintLayout>

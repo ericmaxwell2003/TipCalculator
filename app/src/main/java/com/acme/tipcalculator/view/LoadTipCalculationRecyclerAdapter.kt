@@ -38,7 +38,7 @@ class LoadTipCalculationRecyclerAdapter(
             RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tipCalc: TipCalculation) {
-            binding.tipCalculation = tipCalc
+            binding.vm = tipCalc
             binding.root.setOnClickListener { onTipCalcSelected(tipCalc) }
             binding.executePendingBindings()
         }
