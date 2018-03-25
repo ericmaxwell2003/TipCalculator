@@ -54,15 +54,13 @@ class TipCalculatorActivity : AppCompatActivity(),
          */
         // binding.vm = calculatorViewModel
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(getToolbar())
 
         /**
          * TODO Lab 2: Remove this entire FloatingActionButton listener block.  We're going to let Data Binding do the work
          *        of binding viewModel actions to the view and react to viewModel updates.
          *
          */
-        setSupportActionBar(getToolbar())
-
         getFloatingActionButton().setOnClickListener { _ ->
 
             calculatorViewModel.checkAmtInput = getInputCheckoutAmountValue()
@@ -105,31 +103,25 @@ class TipCalculatorActivity : AppCompatActivity(),
         Snackbar.make(getRootView(), "Saved $name", Snackbar.LENGTH_SHORT).show()
     }
 
-    /**
-     * TODO Lab 2: Remove lookup methods for view variables that are no longer needed because
-     *             the activity is managing all of them.
-     */
-    private fun getInputTipPercentageValue() : String {
-        return binding.content?.inputTipPercentage?.text.toString()
-    }
-
-    private fun getInputCheckoutAmountValue() : String {
-        return binding.content?.inputTipPercentage?.text.toString()
-    }
-
-    private fun getFloatingActionButton() : FloatingActionButton {
-        return binding.calculateFab
-    }
-
-    /**
-     * TODO LAB 2: Keep this one, we're still using it.
-     */
     private fun getRootView(): View {
         return binding.root
     }
 
     private fun TipCalculatorActivity.getToolbar(): Toolbar {
         return binding.toolbar
+    }
+
+    /** TODO Lab 2: Remove lookup functions and updateView functions no longer needed. */
+    private fun getInputTipPercentageValue() : String {
+        return binding.content?.inputTipPercentage?.text.toString()
+    }
+
+    private fun getInputCheckoutAmountValue() : String {
+        return binding.content?.inputCheckAmount?.text.toString()
+    }
+
+    private fun getFloatingActionButton() : FloatingActionButton {
+        return binding.calculateFab
     }
 
     private fun updateView(inputsToo: Boolean = false) {

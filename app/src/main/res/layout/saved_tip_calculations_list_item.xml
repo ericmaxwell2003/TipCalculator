@@ -9,28 +9,28 @@
     android:padding="8dp"
     tools:showIn="@layout/saved_tip_calculations_list">
 
-    <!-- TODO Lab 2: Bind to the vm's locationName String for this view. -->
-    <TextView
-        android:id="@+id/locationName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="@{tipCalculation.locationName}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Veggie Chop House" />
+        <!-- TODO Lab 2: Bind to the vm's locationName String for this view. -->
+        <TextView
+            android:id="@+id/locationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Veggie Chop House"
+            android:text="" />
 
-    <!-- TODO Lab 2: Bind to the vm's grandTotal Double for this view and format it as a dollar_amount. -->
-    <TextView
-        android:id="@+id/total_dollar_amount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="@{@string/dollar_amount(tipCalculation.grandTotal)}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="$10.00" />
+        <!-- TODO Lab 2: Bind to the vm's grandTotal Double for this view and format it as a dollar_amount. -->
+        <TextView
+            android:id="@+id/total_dollar_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="$10.00"
+            android:text="$10.00" />
 
 </android.support.constraint.ConstraintLayout>
