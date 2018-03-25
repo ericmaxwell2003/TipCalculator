@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -85,7 +85,8 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="$20.00"
-                    android:text="@{@string/dollar_amount(vm.tipCalculation.checkAmount)}" />
+                    android:text="@{@string/dollar_amount(vm.tipCalculation.checkAmount)}"
+                    />
 
                 <TextView
                     android:id="@+id/bill_amount_label"
@@ -119,7 +120,8 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     tools:text="Tip"
-                    android:text="@string/tip_output_label" />
+                    android:text="@string/tip_output_label"
+                    />
 
 
             </LinearLayout>
